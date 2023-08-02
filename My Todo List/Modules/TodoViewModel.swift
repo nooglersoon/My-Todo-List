@@ -27,6 +27,7 @@ class TodoViewModel: ObservableObject {
         withAnimation {
             // Create new Todo object by assign the title & desc
             let newItem = Todo(context: viewContext)
+            newItem.id = UUID()
             newItem.dueDate = todo.date
             newItem.title = todo.title
             newItem.desc = todo.desc
