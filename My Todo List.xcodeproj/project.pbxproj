@@ -14,6 +14,7 @@
 		01122D5A2A7A02070056B674 /* TodoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01122D582A7A02070056B674 /* TodoModel.xcdatamodeld */; };
 		01122D5C2A7A03EB0056B674 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01122D5B2A7A03EB0056B674 /* PersistenceManager.swift */; };
 		01122D5E2A7A10850056B674 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01122D5D2A7A10850056B674 /* TodoViewModel.swift */; };
+		01122D602A7A42950056B674 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01122D5F2A7A42950056B674 /* FormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		01122D592A7A02070056B674 /* TodoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoModel.xcdatamodel; sourceTree = "<group>"; };
 		01122D5B2A7A03EB0056B674 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		01122D5D2A7A10850056B674 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		01122D5F2A7A42950056B674 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				01122D582A7A02070056B674 /* TodoModel.xcdatamodeld */,
 				01122D5B2A7A03EB0056B674 /* PersistenceManager.swift */,
 				01122D5D2A7A10850056B674 /* TodoViewModel.swift */,
+				01122D5F2A7A42950056B674 /* FormView.swift */,
 			);
 			path = "My Todo List";
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01122D602A7A42950056B674 /* FormView.swift in Sources */,
 				01122D4D2A79FC0F0056B674 /* ContentView.swift in Sources */,
 				01122D5A2A7A02070056B674 /* TodoModel.xcdatamodeld in Sources */,
 				01122D4B2A79FC0F0056B674 /* My_Todo_ListApp.swift in Sources */,

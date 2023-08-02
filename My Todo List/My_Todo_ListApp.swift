@@ -11,11 +11,11 @@ import SwiftUI
 struct My_Todo_ListApp: App {
     
     // ViewModel Initialization
-    @StateObject var viewModel = TodoViewModel()
+    let persistenceManager = PersistenceManager.shared
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(viewModel)
+            ContentView(viewModel: .init(viewContext: persistenceManager.container.viewContext))
+                .environment(\.managedObjectContext, persistenceManager.container.viewContext)
         }
     }
 }

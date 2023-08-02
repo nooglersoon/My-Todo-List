@@ -10,14 +10,25 @@ import SwiftUI
 struct ContentView: View {
     
     // Call the viewModel environment object
-    @EnvironmentObject var viewModel: TodoViewModel
+    let viewModel: TodoViewModel
+    
+    init(viewModel: TodoViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Todo.dueDate,ascending: true)],
+        animation: .default
+    )
+    private var items: FetchedResults<Todo>
+    
     @State private var showingAlert = false
     
     var body: some View {
         NavigationView {
             List {
                 // Get the todo items from the persistence store through viewModel
-                ForEach(viewModel.items) { todo in
+                ForEach(items) { todo in
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             Text(todo.title ?? "")
@@ -32,23 +43,12 @@ struct ContentView: View {
                     }
                 }
                 .onDelete { indexSet in
-                    viewModel.deleteItems(offsets: indexSet)
+                    viewModel.deleteItems(items: items, offsets: indexSet)
                 }
             }
-            // Alert to create new todo
-            .alert("Create new todo", isPresented: $showingAlert) {
-                VStack(spacing: 16) {
-                    TextField("Enter title", text: $viewModel.title)
-                    TextField("Enter description", text: $viewModel.desc)
-                }
-                Button(action: {
-                    viewModel.addItem()
-                }) {
-                    Text("Add")
-                }
-            } message: {
-                Text("Please enter title and description")
-            }
+            .sheet(isPresented: $showingAlert, content: {
+                FormView(viewModel: viewModel)
+            })
             .navigationTitle("My To Do")
             .toolbar {
                 ToolbarItem {
@@ -63,8 +63,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
