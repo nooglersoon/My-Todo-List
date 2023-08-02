@@ -9,13 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Text("Develop iOS Apps")
+                            .font(.title3)
+                        Spacer()
+                        Text("10/11")
+                            .font(.footnote)
+                    }
+                    Text("Using SwiftUI")
+                        .font(.callout)
+                        .lineLimit(2)
+                }
+            }
+            .navigationTitle("My To Do")
         }
-        .padding()
     }
 }
 
