@@ -37,4 +37,26 @@ class TodoViewModel: ObservableObject {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
+    
+    func addItem() {
+        withAnimation {
+            // Create new Todo object by assign the title & desc
+            let newItem = Todo(context: viewContext)
+            newItem.dueDate = Date()
+            newItem.title = title
+            newItem.desc = desc
+            do {
+                try viewContext.save()
+                // Fetch the latest data and clear out the title & desc state
+                fetchData()
+                title = ""
+                desc = ""
+            } catch {
+                // TODO: Handle error
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
 }
