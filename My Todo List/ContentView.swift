@@ -34,7 +34,7 @@ struct ContentView: View {
                             Text(todo.title ?? "")
                                 .font(.title3)
                             Spacer()
-                            Text("10/11")
+                            Text(todo.dueDate?.toShortFormattedString ?? "")
                                 .font(.footnote)
                         }
                         Text(todo.desc ?? "")
