@@ -31,6 +31,9 @@ struct ContentView: View {
                             .lineLimit(2)
                     }
                 }
+                .onDelete { indexSet in
+                    viewModel.deleteItems(offsets: indexSet)
+                }
             }
             // Alert to create new todo
             .alert("Create new todo", isPresented: $showingAlert) {

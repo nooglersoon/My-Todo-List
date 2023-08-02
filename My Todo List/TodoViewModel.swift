@@ -59,4 +59,19 @@ class TodoViewModel: ObservableObject {
         }
     }
     
+    func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            offsets
+                .map { items[$0] }
+                .forEach(viewContext.delete)
+
+            do {
+                try viewContext.save()
+            } catch {
+                // TODO: Handle error
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
 }
