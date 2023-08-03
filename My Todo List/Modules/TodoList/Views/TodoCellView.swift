@@ -28,9 +28,3 @@ struct TodoCellView: View {
         }
     }
 }
-
-//struct TodoCellView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TodoCellView()
-//    }
-//}
