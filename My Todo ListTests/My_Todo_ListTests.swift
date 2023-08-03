@@ -39,6 +39,23 @@ final class My_Todo_ListTests: XCTestCase {
         
     }
     
+    func test_update_item() throws {
+        
+        viewModel.addItem(.init(title: "Test 1", desc: nil, date: .now))
+        
+        let todos = fetch()
+        
+        var firstTodo: Todo = todos!.first!
+        
+        XCTAssertEqual(firstTodo.title, "Test 1")
+        
+        viewModel.updateItem(todo: firstTodo, with: .init(title: "Test 1 changed", desc: "Desc", date: .now))
+        
+        XCTAssertEqual(firstTodo.title, "Test 1 changed")
+        XCTAssertNotNil(firstTodo.desc)
+        
+    }
+    
 }
 
 private extension My_Todo_ListTests {
