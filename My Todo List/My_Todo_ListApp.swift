@@ -12,10 +12,14 @@ struct My_Todo_ListApp: App {
     
     // ViewModel Initialization
     let persistenceManager = PersistenceManager.shared
+    
+    @StateObject var viewModel = TodoViewModel(viewContext: PersistenceManager.shared.container.viewContext)
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: .init(viewContext: persistenceManager.container.viewContext))
+            ContentView()
                 .environment(\.managedObjectContext, persistenceManager.container.viewContext)
+                .environmentObject(viewModel)
         }
     }
 }

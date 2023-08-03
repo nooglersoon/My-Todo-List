@@ -10,11 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     // Call the viewModel environment object
-    let viewModel: TodoViewModel
-    
-    init(viewModel: TodoViewModel) {
-        self.viewModel = viewModel
-    }
+    @EnvironmentObject var viewModel: TodoViewModel
     
     @State private var showingAlert = false
     
