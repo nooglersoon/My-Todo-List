@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import CoreData
 
+// This model is to help differentiate between object entity and data model
 struct TodoModel {
     let title: String
     let desc: String?
@@ -37,6 +38,7 @@ class TodoViewModel: ObservableObject {
     
     func deleteItems(items: FetchedResults<Todo>, offsets: IndexSet) {
         withAnimation {
+            // Delete related item
             offsets
                 .map { items[$0] }
                 .forEach(viewContext.delete)
@@ -46,6 +48,7 @@ class TodoViewModel: ObservableObject {
     
     func updateItem(todo: Todo, with model: TodoModel) {
         withAnimation {
+            // Update related item
             todo.title = model.title
             todo.desc = model.desc
             todo.dueDate = model.date
@@ -54,6 +57,7 @@ class TodoViewModel: ObservableObject {
     }
     
     func saveItem() {
+        // Safely save the data to viewContext
         do {
             try viewContext.save()
         } catch {

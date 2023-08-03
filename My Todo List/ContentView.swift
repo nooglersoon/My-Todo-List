@@ -44,6 +44,7 @@ struct ContentView: View {
                         viewModel.deleteItems(items: items, offsets: indexSet)
                     }
                 } else {
+                    // Empty States
                     Text("No current todos")
                 }
             }

@@ -10,8 +10,10 @@ import CoreData
 
 class PersistenceManager {
     
+    // Shared initialization to implement singleton pattern
     static let shared = PersistenceManager()
     
+    // Mock data for preview and test purpose
     static var preview: PersistenceManager = {
         let result = PersistenceManager()
         let viewContext = result.container.viewContext
@@ -33,6 +35,7 @@ class PersistenceManager {
     
     let container: NSPersistentContainer
     
+    // Defined as private to prevent PersistenceManager initialization outside this class
     private init() {
         container = NSPersistentContainer(name: "TodoModel")
         container.loadPersistentStores { storeDescription, error in
@@ -41,6 +44,7 @@ class PersistenceManager {
             }
         }
         
+        // Help merge the data automatically
         container.viewContext.automaticallyMergesChangesFromParent = true
         
     }
