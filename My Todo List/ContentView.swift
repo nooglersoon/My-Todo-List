@@ -33,18 +33,11 @@ struct ContentView: View {
                         NavigationLink {
                             FormView(viewModel: viewModel, todoID: todo.id)
                         } label: {
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Text(todo.title ?? "")
-                                        .font(.title3)
-                                    Spacer()
-                                    Text(todo.dueDate?.toShortFormattedString ?? "")
-                                        .font(.footnote)
-                                }
-                                Text(todo.desc ?? "")
-                                    .font(.callout)
-                                    .lineLimit(2)
-                            }
+                            TodoCellView(
+                                title: todo.title ?? "",
+                                dueDate: todo.dueDate,
+                                desc: todo.desc
+                            )
                         }
                     }
                     .onDelete { indexSet in

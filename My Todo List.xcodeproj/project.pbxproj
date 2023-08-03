@@ -16,6 +16,7 @@
 		01122D5E2A7A10850056B674 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01122D5D2A7A10850056B674 /* TodoViewModel.swift */; };
 		01122D602A7A42950056B674 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01122D5F2A7A42950056B674 /* FormView.swift */; };
 		01122D632A7A51F50056B674 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01122D622A7A51F50056B674 /* Date+Ext.swift */; };
+		0196F4D12A7B5FFA000E0695 /* TodoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196F4D02A7B5FFA000E0695 /* TodoCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		01122D5D2A7A10850056B674 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		01122D5F2A7A42950056B674 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		01122D622A7A51F50056B674 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		0196F4D02A7B5FFA000E0695 /* TodoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +94,8 @@
 		01122D652A7A54730056B674 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				01122D5F2A7A42950056B674 /* FormView.swift */,
-				01122D5D2A7A10850056B674 /* TodoViewModel.swift */,
+				0196F4CF2A7B5FB8000E0695 /* ViewModel */,
+				0196F4CE2A7B5FAF000E0695 /* Views */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -104,6 +106,23 @@
 				01122D5B2A7A03EB0056B674 /* PersistenceManager.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		0196F4CE2A7B5FAF000E0695 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				01122D5F2A7A42950056B674 /* FormView.swift */,
+				0196F4D02A7B5FFA000E0695 /* TodoCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0196F4CF2A7B5FB8000E0695 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				01122D5D2A7A10850056B674 /* TodoViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +201,7 @@
 				01122D5A2A7A02070056B674 /* TodoModel.xcdatamodeld in Sources */,
 				01122D4B2A79FC0F0056B674 /* My_Todo_ListApp.swift in Sources */,
 				01122D5E2A7A10850056B674 /* TodoViewModel.swift in Sources */,
+				0196F4D12A7B5FFA000E0695 /* TodoCellView.swift in Sources */,
 				01122D5C2A7A03EB0056B674 /* PersistenceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
