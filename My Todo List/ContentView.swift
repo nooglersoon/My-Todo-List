@@ -27,23 +27,31 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                // Get the todo items from the persistence store through viewModel
-                ForEach(items) { todo in
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack {
-                            Text(todo.title ?? "")
-                                .font(.title3)
-                            Spacer()
-                            Text(todo.dueDate?.toShortFormattedString ?? "")
-                                .font(.footnote)
+                if items.count > 0 {
+                    // Get the todo items from the persistence store through viewModel
+                    ForEach(items) { todo in
+                        NavigationLink {
+                            FormView(viewModel: viewModel, todoID: todo.id)
+                        } label: {
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack {
+                                    Text(todo.title ?? "")
+                                        .font(.title3)
+                                    Spacer()
+                                    Text(todo.dueDate?.toShortFormattedString ?? "")
+                                        .font(.footnote)
+                                }
+                                Text(todo.desc ?? "")
+                                    .font(.callout)
+                                    .lineLimit(2)
+                            }
                         }
-                        Text(todo.desc ?? "")
-                            .font(.callout)
-                            .lineLimit(2)
                     }
-                }
-                .onDelete { indexSet in
-                    viewModel.deleteItems(items: items, offsets: indexSet)
+                    .onDelete { indexSet in
+                        viewModel.deleteItems(items: items, offsets: indexSet)
+                    }
+                } else {
+                    Text("No current todos")
                 }
             }
             .sheet(isPresented: $showingAlert, content: {

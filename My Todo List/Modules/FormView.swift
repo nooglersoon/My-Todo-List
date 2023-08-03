@@ -12,9 +12,11 @@ struct FormView: View {
     // Call the viewModel environment object
     
     let viewModel: TodoViewModel
+    let todoID: UUID?
     
-    init(viewModel: TodoViewModel) {
+    init(viewModel: TodoViewModel, todoID: UUID? = nil) {
         self.viewModel = viewModel
+        self.todoID = todoID
     }
     
     @State private var title: String = ""
@@ -24,23 +26,37 @@ struct FormView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        Form {
-            Section {
-                TextField("Title", text: $title)
-                TextField("Description", text: $description)
-                DatePicker("Pick a Date", selection: $date,displayedComponents: .date)
-            } header: {
-                Text("To Do")
+        VStack {
+            HStack {
+                Text(todoID == nil ? "Add Todo" : "Edit Todo")
+                    .font(.title)
+                    .bold()
+                Spacer()
             }
-            Section {
-                Button(action: {
-                    viewModel.addItem(todo: .init(title: title, desc: description, date: date))
-                    dismiss()
-                }) {
-                    Text("Submit")
+            .padding(.vertical, 16)
+            .padding(.horizontal, 24)
+            Form {
+                Section {
+                    TextField("Title", text: $title)
+                    TextField("Description", text: $description)
+                    DatePicker("Due date", selection: $date,displayedComponents: .date)
+                } header: {
+                    Text("To Do")
                 }
-                .disabled(title.isEmpty)
             }
+            Button(action: {
+                viewModel.addItem(todo: .init(title: title, desc: description, date: date))
+                dismiss()
+            }) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                    Text("Submit")
+                        .foregroundColor(.white)
+                }
+                .frame(height: 40)
+                .padding()
+            }
+            .disabled(title.isEmpty)
         }
     }
 }
