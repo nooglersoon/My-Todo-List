@@ -39,7 +39,7 @@ struct FormView: View {
                 Section {
                     TextField("Title", text: $title)
                     TextField("Description", text: $description)
-                    DatePicker("Due date", selection: $date,displayedComponents: .date)
+                    DatePicker("Due date", selection: $date, in: Date()..., displayedComponents: .date)
                 } header: {
                     Text("To Do")
                 }
