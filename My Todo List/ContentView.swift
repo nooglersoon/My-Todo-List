@@ -16,9 +16,9 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            TodoListView(viewModel: viewModel)
+            TodoListView()
             .sheet(isPresented: $showingAlert, content: {
-                FormView(viewModel: viewModel)
+                FormView()
             })
             .navigationTitle("My To Do")
             .toolbar {

@@ -10,12 +10,11 @@ import SwiftUI
 struct FormView: View {
     
     // Call the viewModel environment object
+    @EnvironmentObject var viewModel: TodoViewModel
     
-    let viewModel: TodoViewModel
     let todo: Todo?
     
-    init(viewModel: TodoViewModel, todo: Todo? = nil) {
-        self.viewModel = viewModel
+    init(todo: Todo? = nil) {
         self.todo = todo
     }
     

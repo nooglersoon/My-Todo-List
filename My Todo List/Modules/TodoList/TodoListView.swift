@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct TodoListView: View {
-    // Call the viewModel environment object
-    let viewModel: TodoViewModel
     
-    init(viewModel: TodoViewModel) {
-        self.viewModel = viewModel
-    }
+    // Call the viewModel environment object
+    @EnvironmentObject var viewModel: TodoViewModel
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Todo.dueDate,ascending: true)],
@@ -27,7 +24,7 @@ struct TodoListView: View {
                 // Get the todo items from the persistence store through viewModel
                 ForEach(items) { todo in
                     NavigationLink {
-                        FormView(viewModel: viewModel, todo: todo)
+                        FormView(todo: todo)
                     } label: {
                         TodoCellView(
                             title: todo.title ?? "",
