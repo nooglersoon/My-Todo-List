@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to My Todo List App, an iOS app built with SwiftUI that helps you manage your tasks efficiently. This app is designed to be a user-friendly task manager that allows you to add, view, edit, and delete tasks effortlessly.
+Welcome to My Todo List App, an iOS app built with SwiftUI that helps you manage your tasks efficiently. This app is designed to be a user-friendly task manager that allows you to add, view, edit, and delete tasks effortlessly. I also implement industry best practice while developing the app such as MVVM design pattern, singleton and unit tests.
 
 ## Features
 
