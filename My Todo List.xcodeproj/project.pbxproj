@@ -18,6 +18,7 @@
 		01122D632A7A51F50056B674 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01122D622A7A51F50056B674 /* Date+Ext.swift */; };
 		0196F4D12A7B5FFA000E0695 /* TodoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196F4D02A7B5FFA000E0695 /* TodoCellView.swift */; };
 		0196F4D42A7B69A5000E0695 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196F4D32A7B69A5000E0695 /* TodoListView.swift */; };
+		0196F4D72A7B6C81000E0695 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196F4D62A7B6C81000E0695 /* TodoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		01122D622A7A51F50056B674 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		0196F4D02A7B5FFA000E0695 /* TodoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCellView.swift; sourceTree = "<group>"; };
 		0196F4D32A7B69A5000E0695 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		0196F4D62A7B6C81000E0695 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,11 +131,20 @@
 		0196F4D22A7B696C000E0695 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				0196F4D52A7B6C74000E0695 /* Model */,
 				0196F4CF2A7B5FB8000E0695 /* ViewModel */,
 				0196F4CE2A7B5FAF000E0695 /* Views */,
 				0196F4D32A7B69A5000E0695 /* TodoListView.swift */,
 			);
 			path = TodoList;
+			sourceTree = "<group>";
+		};
+		0196F4D52A7B6C74000E0695 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0196F4D62A7B6C81000E0695 /* TodoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +220,7 @@
 				01122D602A7A42950056B674 /* FormView.swift in Sources */,
 				01122D632A7A51F50056B674 /* Date+Ext.swift in Sources */,
 				01122D4D2A79FC0F0056B674 /* ContentView.swift in Sources */,
+				0196F4D72A7B6C81000E0695 /* TodoModel.swift in Sources */,
 				01122D5A2A7A02070056B674 /* TodoModel.xcdatamodeld in Sources */,
 				01122D4B2A79FC0F0056B674 /* My_Todo_ListApp.swift in Sources */,
 				0196F4D42A7B69A5000E0695 /* TodoListView.swift in Sources */,

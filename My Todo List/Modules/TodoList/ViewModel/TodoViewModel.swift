@@ -9,13 +9,6 @@ import Foundation
 import SwiftUI
 import CoreData
 
-// This model is to help differentiate between object entity and data model
-struct TodoModel {
-    let title: String
-    let desc: String?
-    let date: Date
-}
-
 class TodoViewModel: ObservableObject {
     
     private(set) var viewContext: NSManagedObjectContext
