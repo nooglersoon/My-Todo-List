@@ -45,7 +45,7 @@ final class My_Todo_ListTests: XCTestCase {
         
         let todos = fetch()
         
-        var firstTodo: Todo = todos!.first!
+        let firstTodo: Todo = todos!.first!
         
         XCTAssertEqual(firstTodo.title, "Test 1")
         
