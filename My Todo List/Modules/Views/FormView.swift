@@ -45,7 +45,7 @@ struct FormView: View {
                 }
             }
             Button(action: {
-                viewModel.addItem(todo: .init(title: title, desc: description, date: date))
+                viewModel.addItem(.init(title: title, desc: description, date: date))
                 dismiss()
             }) {
                 ZStack {

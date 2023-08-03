@@ -23,7 +23,7 @@ class TodoViewModel: ObservableObject {
         self.viewContext = viewContext
     }
     
-    func addItem(todo: TodoModel) {
+    func addItem(_ todo: TodoModel) {
         withAnimation {
             // Create new Todo object by assign the title & desc
             let newItem = Todo(context: viewContext)
@@ -31,13 +31,7 @@ class TodoViewModel: ObservableObject {
             newItem.dueDate = todo.date
             newItem.title = todo.title
             newItem.desc = todo.desc
-            do {
-                try viewContext.save()
-            } catch {
-                // TODO: Handle error
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            saveItem()
         }
     }
     
@@ -46,14 +40,18 @@ class TodoViewModel: ObservableObject {
             offsets
                 .map { items[$0] }
                 .forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // TODO: Handle error
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            saveItem()
         }
     }
+    
+    func saveItem() {
+        do {
+            try viewContext.save()
+        } catch {
+            // TODO: Handle error
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
 }
