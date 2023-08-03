@@ -27,6 +27,18 @@ final class My_Todo_ListTests: XCTestCase {
         XCTAssertEqual(todos?.count, 0)
     }
     
+    func test_add_item() throws {
+        
+        viewModel.addItem(.init(title: "Test 1", desc: nil, date: .now))
+        viewModel.addItem(.init(title: "Test 2", desc: nil, date: .now))
+        viewModel.addItem(.init(title: "Test 3", desc: nil, date: .now))
+        
+        let todos = fetch()
+        
+        XCTAssertEqual(todos?.count, 3)
+        
+    }
+    
 }
 
 private extension My_Todo_ListTests {
