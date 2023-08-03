@@ -44,6 +44,15 @@ class TodoViewModel: ObservableObject {
         }
     }
     
+    func updateItem(todo: Todo, with model: TodoModel) {
+        withAnimation {
+            todo.title = model.title
+            todo.desc = model.desc
+            todo.dueDate = model.date
+            saveItem()
+        }
+    }
+    
     func saveItem() {
         do {
             try viewContext.save()

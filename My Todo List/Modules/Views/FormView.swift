@@ -12,11 +12,11 @@ struct FormView: View {
     // Call the viewModel environment object
     
     let viewModel: TodoViewModel
-    let todoID: UUID?
+    let todo: Todo?
     
-    init(viewModel: TodoViewModel, todoID: UUID? = nil) {
+    init(viewModel: TodoViewModel, todo: Todo? = nil) {
         self.viewModel = viewModel
-        self.todoID = todoID
+        self.todo = todo
     }
     
     @State private var title: String = ""
@@ -28,7 +28,7 @@ struct FormView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(todoID == nil ? "Add Todo" : "Edit Todo")
+                Text(todo == nil ? "Add Todo" : "Edit Todo")
                     .font(.title)
                     .bold()
                 Spacer()
@@ -45,18 +45,40 @@ struct FormView: View {
                 }
             }
             Button(action: {
-                viewModel.addItem(.init(title: title, desc: description, date: date))
+                if let todo {
+                    viewModel.updateItem(
+                        todo: todo,
+                        with: .init(
+                            title: title,
+                            desc: description,
+                            date: date)
+                    )
+                } else {
+                    viewModel.addItem(
+                        .init(
+                            title: title,
+                            desc: description,
+                            date: date)
+                    )
+                }
                 dismiss()
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
-                    Text("Submit")
+                    Text(todo == nil ? "Add Todo" : "Update")
                         .foregroundColor(.white)
                 }
                 .frame(height: 40)
                 .padding()
             }
             .disabled(title.isEmpty)
+        }
+        .onAppear {
+            if let todo {
+                title = todo.title ?? ""
+                description = todo.desc ?? ""
+                date = todo.dueDate ?? Date()
+            }
         }
     }
 }

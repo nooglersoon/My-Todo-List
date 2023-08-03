@@ -31,7 +31,7 @@ struct ContentView: View {
                     // Get the todo items from the persistence store through viewModel
                     ForEach(items) { todo in
                         NavigationLink {
-                            FormView(viewModel: viewModel, todoID: todo.id)
+                            FormView(viewModel: viewModel, todo: todo)
                         } label: {
                             TodoCellView(
                                 title: todo.title ?? "",
