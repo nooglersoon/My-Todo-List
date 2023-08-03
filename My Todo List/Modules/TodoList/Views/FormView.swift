@@ -66,6 +66,7 @@ struct FormView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     func handleButtonAction() {
