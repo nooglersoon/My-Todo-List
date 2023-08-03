@@ -44,22 +44,7 @@ struct FormView: View {
                 }
             }
             Button(action: {
-                if let todo {
-                    viewModel.updateItem(
-                        todo: todo,
-                        with: .init(
-                            title: title,
-                            desc: description,
-                            date: date)
-                    )
-                } else {
-                    viewModel.addItem(
-                        .init(
-                            title: title,
-                            desc: description,
-                            date: date)
-                    )
-                }
+                handleButtonAction()
                 dismiss()
             }) {
                 ZStack {
@@ -79,7 +64,37 @@ struct FormView: View {
                 date = todo.dueDate ?? Date()
             }
         }
+        .alert("Ouch something happened.", isPresented: $viewModel.showAlert) {
+            Button("OK") {}
+        } message: {
+            switch viewModel.errorType {
+            case let .failedToSaveData(desc):
+                Text(desc)
+            default:
+                Text("Unknown error")
+            }
+        }
     }
+    
+    func handleButtonAction() {
+        if let todo {
+            viewModel.updateItem(
+                todo: todo,
+                with: .init(
+                    title: title,
+                    desc: description,
+                    date: date)
+            )
+        } else {
+            viewModel.addItem(
+                .init(
+                    title: title,
+                    desc: description,
+                    date: date)
+            )
+        }
+    }
+    
 }
 
 //struct FormView_Previews: PreviewProvider {

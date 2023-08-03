@@ -9,9 +9,17 @@ import Foundation
 import SwiftUI
 import CoreData
 
+enum ErrorType: LocalizedError {
+    case failedToSaveData(String)
+}
+
+@MainActor
 class TodoViewModel: ObservableObject {
     
     private(set) var viewContext: NSManagedObjectContext
+    
+    @Published var showAlert: Bool = false
+    @Published var errorType: ErrorType?
     
     init(viewContext: NSManagedObjectContext) {
         self.viewContext = viewContext
@@ -54,9 +62,8 @@ class TodoViewModel: ObservableObject {
         do {
             try viewContext.save()
         } catch {
-            // TODO: Handle error
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            errorType = .failedToSaveData("Sorry failed to save the data. Try again later")
+            showAlert.toggle()
         }
     }
     
