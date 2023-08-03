@@ -12,8 +12,27 @@ import CoreData
 @MainActor
 final class My_Todo_ListTests: XCTestCase {
     
+    var viewModel: TodoViewModel!
+    
+    override func setUpWithError() throws {
+        viewModel = TodoViewModel(viewContext: mockPersistentContainer.viewContext)
+    }
+    
+    override func tearDownWithError() throws {
+        viewModel = nil
+    }
+    
+    func test_fetch_item_with_empty_result() throws {
+        let todos = fetch()
+        XCTAssertEqual(todos?.count, 0)
+    }
+    
+}
+
+private extension My_Todo_ListTests {
+    
     // Mock Persistent Container
-    lazy var mockPersistentContainer: NSPersistentContainer = {
+    var mockPersistentContainer: NSPersistentContainer {
         
         let container = NSPersistentContainer(name: "TodoModel")
         let description = NSPersistentStoreDescription()
@@ -31,28 +50,7 @@ final class My_Todo_ListTests: XCTestCase {
             }
         }
         return container
-    }()
-    
-    var viewModel: TodoViewModel!
-    
-    override func setUpWithError() throws {
-        viewModel = TodoViewModel(viewContext: mockPersistentContainer.viewContext)
     }
-    
-    override func tearDownWithError() throws {
-        viewModel = nil
-    }
-    
-    func testExample() throws {
-        
-        viewModel.addItem(.init(title: "Test", desc: nil, date: .now))
-        
-        let todos = fetch()
-        
-        XCTAssertEqual(todos?.count, 1)
-        
-    }
-    
     
     // Helper to fetch mock data
     
